@@ -1,0 +1,161 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+logfiles/
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+.nyc_output/
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Output files
+dist/
+build/
+out/
+
+# TypeScript
+*.tsbuildinfo
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Uploads and temporary files
+uploads/
+temp/
+tmp/
+temp_*
+*.tmp
+
+# Database files - Sequelize specific
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+database.sqlite
+database.sqlite3
+
+# Sequelize specific
+# Database migrations backup (if you generate backups)
+migrations/*.backup
+seeders/*.backup
+
+# Sequelize CLI config (if it contains sensitive info)
+.sequelizerc
+config/config.json  # If it contains database credentials
+config/config.js    # If it contains database credentials
+
+# Sequelize models cache (if using any caching)
+.sequelize-sync-cache
+
+# Database connection files
+database.json
+database.yml
+database.yaml
+database.credentials
+
+# MySQL specific
+*.ibd
+*.frm
+*.myd
+*.myi
+
+# PostgreSQL specific
+*.pgdata
+postgres-data/
+
+# MongoDB specific (if using with Sequelize)
+data/
+dump/
+*.mongodb
+
+# Redis specific
+dump.rdb
+redis-data/
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+docker-compose.local.yml
+
+# PM2 ecosystem files
+ecosystem.config.js
+.pm2/
+
+# Authentication and certificates
+*.pem
+*.key
+*.crt
+
+# Testing
+test-results/
+test-report.html
+
+# User uploads
+public/uploads/
+private/uploads/
+
+# Session storage
+session-store/
+sessions/
+session-data/
+
+# Environment-specific
+.env.dev
+.env.prod
+.env.staging
+
+# Database seed data (if contains sensitive test data)
+seed-data/
+test-data/
+
+# Database dumps
+*.sql
+*.dump
+backups/
+db-dumps/
