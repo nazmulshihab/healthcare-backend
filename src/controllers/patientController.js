@@ -13,21 +13,104 @@ export const getAllPatients = async (req, res) => {
 };
 
 // Example: Get a patient by ID
+// export const getPatientById = async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const patient = await models.patients.findByPk(id);
+
+//     if (!patient) {
+//       return res.status(404).json({ message: "Patient not found" });
+//     }
+
+//     res.status(200).json(patient);
+//   } catch (error) {
+//     console.error("Error fetching patient:", error);
+//     res.status(500).json({ message: "Internal Server Error" });
+//   }
+// };
 export const getPatientById = async (req, res) => {
   try {
     const { id } = req.params;
-    const patient = await models.patients.findByPk(id);
+    
+    const patient = await models.patients.findByPk(id, {
+      attributes: [
+        "patient_id",
+        "patient_name",
+        "gender",
+        "age",
+        "mobile",
+        "email",
+        "city",
+        "account_created"
+      ],
+      include: [
+        {
+          model: models.appointments,
+          as: "appointments",
+          attributes: [
+            "appointment_id",
+            "appointment_date",
+            "appointment_time",
+            "serial_no",
+            "status"
+          ],
+          include: [
+            {
+              model: models.doctors,
+              as: "doctor",
+              attributes: ["doctor_id", "doctor_name", "specialization", "fee"]
+            }
+          ],
+          order: [['appointment_date', 'DESC']],
+          limit: 10
+        },
+        {
+          model: models.diagnoseshistory,
+          as: "diagnoseshistories",
+          attributes: [
+            "diagnosis_id",
+            "diagnosis_datetime"
+          ],
+          include: [
+            {
+              model: models.tests,
+              as: "test",
+              attributes: ["test_id", "test_name", "test_price"]
+            },
+            {
+              model: models.reports,
+              as: "reports",
+              attributes: ["report_id", "file_path"]
+            }
+          ],
+          order: [['diagnosis_datetime', 'DESC']],
+          limit: 10
+        }
+      ]
+    });
 
     if (!patient) {
-      return res.status(404).json({ message: "Patient not found" });
+      return res.status(404).json({
+        success: false,
+        message: "Patient not found"
+      });
     }
 
-    res.status(200).json(patient);
+    res.status(200).json({
+      success: true,
+      message: "Patient retrieved successfully",
+      payload: patient
+    });
   } catch (error) {
     console.error("Error fetching patient:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
   }
 };
+
 
 // Example: Create a new patient
 export const createPatient = async (req, res) => {
