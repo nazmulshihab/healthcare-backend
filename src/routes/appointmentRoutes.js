@@ -1,38 +1,3 @@
-// // --------------------------------------------------------------------------------------
-
-// import express from "express";
-// import {
-//   getAllAppointments,
-//   getAppointmentByAppointmentId,
-//   getAppointmentsByPatientId,
-//   getAppointmentsByDoctorId,
-//   createAppointment,
-//   updateAppointmentStatus,
-//   deleteAppointment,
-// } from "../controllers/appointmentController.js";
-
-// const appointmentRouter = express.Router();
-
-// // Base URL: api/appointments/
-
-// appointmentRouter.get("/", getAllAppointments);
-// appointmentRouter.get("/id/:apid", getAppointmentByAppointmentId);
-// appointmentRouter.get("/patient/:pid", getAppointmentsByPatientId);
-// appointmentRouter.get("/doctor/:did", getAppointmentsByDoctorId);
-
-// // Appointment creation
-// appointmentRouter.post("/create", createAppointment);
-
-// // Only status update (doctor can accept/reject)
-// appointmentRouter.put("/status/:id", updateAppointmentStatus);
-
-// // Delete
-// appointmentRouter.delete("/delete/:id", deleteAppointment);
-
-// export default appointmentRouter;
-
-// -----------------------------------------------------------------------------------------------
-
 import express from "express";
 import {
   getAllAppointments,
